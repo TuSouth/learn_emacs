@@ -49,15 +49,15 @@
 ;; Load configs for specific features and modes
 ;;----------------------------------------------------------------------------
 
-(require-package 'diminish)
-(maybe-require-package 'scratch)
-(require-package 'command-log-mode)
+(require-package 'diminish)           ;; 简化mode line，在minor mode比较多时，使其不会太过混乱
+(maybe-require-package 'scratch)      ;; 获取草稿的buffer
+(require-package 'command-log-mode)   ;; 运行的指令的记录
 
 (require 'init-frame-hooks)
-(require 'init-xterm)
-(require 'init-themes)
-(require 'init-osx-keys)
-(require 'init-gui-frames)
+(require 'init-xterm)                 ;; 有关shell的
+(require 'init-themes)                ;; 主题配置
+(require 'init-osx-keys)              ;; 配置macOS中的快捷键
+(require 'init-gui-frames)            ;; 界面配置
 (require 'init-dired)
 (require 'init-isearch)
 (require 'init-grep)
@@ -73,8 +73,8 @@
 (require 'init-sessions)
 ;; (require 'init-mmm)
 
-;; (require 'init-editing-utils)
-;; (require 'init-whitespace)
+(require 'init-editing-utils)
+(require 'init-whitespace)
 
 ;; (require 'init-vc)
 ;; (require 'init-darcs)
@@ -91,7 +91,7 @@
 ;; (require 'init-erlang)
 ;; (require 'init-javascript)
 ;; (require 'init-php)
-;; (require 'init-org)
+(require 'init-org)
 ;; (require 'init-nxml)
 ;; (require 'init-html)
 ;; (require 'init-css)
