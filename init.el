@@ -16,7 +16,7 @@
   (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-(require 'init-benchmarking) ;; Measure startup time
+(require 'init-benchmarking) ;; Measure startup timeqq
 
 (defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
 (defconst *is-a-mac* (eq system-type 'darwin))
@@ -34,7 +34,7 @@
 ;; Bootstrap config
 ;;----------------------------------------------------------------------------
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(require 'init-utils)
+(require 'init-utils-v2)
 (require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
 ;; Calls (package-initialize)
 (require 'init-elpa)      ;; Machinery for installing required packages
@@ -73,20 +73,21 @@
 (require 'init-sessions)
 ;; (require 'init-mmm)
 
+(require 'init-evil)
 (require 'init-editing-utils)
 (require 'init-whitespace)
 
 ;; (require 'init-vc)
 ;; (require 'init-darcs)
-;; (require 'init-git)
-;; (require 'init-github)
+(require 'init-git)
+(require 'init-github)
 
-;; (require 'init-projectile)
+(require 'init-projectile)
 
 ;; (require 'init-compile)
 ;; (require 'init-crontab)
 ;; (require 'init-textile)
-;; (require 'init-markdown)
+(require 'init-markdown)
 ;; (require 'init-csv)
 ;; (require 'init-erlang)
 ;; (require 'init-javascript)
@@ -127,7 +128,7 @@
 
 ;; (require 'init-misc)
 
-;; (require 'init-folding)
+(require 'init-folding)
 ;; (require 'init-dash)
 
 ;; ;;(require 'init-twitter)
@@ -135,34 +136,34 @@
 ;; (require 'init-ledger)
 ;; ;; Extra packages which don't require any configuration
 
-;; (require-package 'sudo-edit)
+(require-package 'sudo-edit)
 ;; (require-package 'gnuplot)
 ;; (require-package 'lua-mode)
 ;; (require-package 'htmlize)
-;; (when *is-a-mac*
-;;   (require-package 'osx-location))
-;; (unless (eq system-type 'windows-nt)
-;;   (maybe-require-package 'daemons))
-;; (maybe-require-package 'dotenv-mode)
-;; (maybe-require-package 'shfmt)
+(when *is-a-mac*
+  (require-package 'osx-location))
+(unless (eq system-type 'windows-nt)
+  (maybe-require-package 'daemons))
+(maybe-require-package 'dotenv-mode)
+(maybe-require-package 'shfmt)
 
-;; (when (maybe-require-package 'uptimes)
-;;   (setq-default uptimes-keep-count 200)
-;;   (add-hook 'after-init-hook (lambda () (require 'uptimes))))
+(when (maybe-require-package 'uptimes)
+  (setq-default uptimes-keep-count 200)
+  (add-hook 'after-init-hook (lambda () (require 'uptimes))))
 
-;; (when (fboundp 'global-eldoc-mode)
-;;   (add-hook 'after-init-hook 'global-eldoc-mode))
+(when (fboundp 'global-eldoc-mode)
+  (add-hook 'after-init-hook 'global-eldoc-mode))
 
-;; (require 'init-direnv)
+(require 'init-direnv)
 
 ;;----------------------------------------------------------------------------
 ;; Allow access from emacsclient
 ;;----------------------------------------------------------------------------
-;; (add-hook 'after-init-hook
-;;           (lambda ()
-;;             (require 'server)
-;;             (unless (server-running-p)
-;;               (server-start))))
+(add-hook 'after-init-hook
+          (lambda ()
+            (require 'server)
+            (unless (server-running-p)
+              (server-start))))
 
 ;;----------------------------------------------------------------------------
 ;; Variables configured via the interactive 'customize' interface
